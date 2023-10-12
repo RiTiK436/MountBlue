@@ -1,0 +1,30 @@
+ public static int sockMerchant(int n, List<Integer> ar) {
+    // Write your code here
+ int result = 0;
+        
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        
+        for(int i = 0; i<n;i++){
+            int key = ar.get(i);
+            if(hm.containsKey(key)){
+                int val = hm.get(key);
+                
+                hm.put(key, ++val);
+                continue;
+            }
+            
+            hm.put(key, 1);
+        }
+        
+        for(Map.Entry<Integer,Integer> entry : hm.entrySet()){
+            int val = entry.getValue();
+                
+                if((val&1) != 0){
+                    val--;
+                }
+            
+            result += val >> 1;
+        }
+        
+        return result;
+    }
